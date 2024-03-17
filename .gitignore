@@ -4,6 +4,7 @@
 eth_train.pkl
 /src/data/TP/processed_data
 /src/data/TP/src/data
+.idea
 
 =======
 >>>>>>> 4a32423 (first commit)
