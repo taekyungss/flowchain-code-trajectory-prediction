@@ -5,18 +5,30 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
  
-def plot_density(x: np.array, y: np.array, p: np.array, path: Path, traj = None) -> None:
-    plt.pcolormesh(x, y, p.reshape(x.shape),
+# def plot_density(x: np.array, y: np.array, p: np.array, path: Path, traj = None) -> None:
+#     plt.pcolormesh(x, y, p.reshape(x.shape),
+#                    shading='auto',
+#                    cmap=plt.cm.get_cmap("Greens"),
+#                    norm=matplotlib.colors.Normalize())
+#     if traj is not None:
+#         obs, gt = traj
+#         sns.lineplot(x=gt[:, 0], y=gt[:, 1],
+#                      color='black', marker='o')
+#         sns.lineplot(x=obs[:, 0], y=obs[:, 1],
+#                      color='green', marker='o')
+#
+#     plt.axis('off')
+#     plt.gca().set_aspect('equal', adjustable='box')
+#     plt.savefig(path, bbox_inches='tight')
+#     plt.close()
+
+
+def plot_density2(p: np.array, path: Path, traj=None) -> None:
+    plt.pcolormesh(p.reshape(p.shape),
                    shading='auto',
                    cmap=plt.cm.get_cmap("Greens"),
                    norm=matplotlib.colors.Normalize())
-    if traj is not None:
-        obs, gt = traj
-        sns.lineplot(x=gt[:, 0], y=gt[:, 1],
-                     color='black', marker='o')
-        sns.lineplot(x=obs[:, 0], y=obs[:, 1],
-                     color='green', marker='o')
-        
+
     plt.axis('off')
     plt.gca().set_aspect('equal', adjustable='box')
     plt.savefig(path, bbox_inches='tight')
@@ -42,6 +54,6 @@ if __name__ == "__main__":
     z = np.zeros_like(zi_list[0])
     for i, zi in enumerate(zi_list):
         z += zi
-        plot_density(xi, yi, z/(i+1), path=f"{i}.png")
+        plot_density2(xi, yi, z/(i+1), path=f"{i}.png")
     
 

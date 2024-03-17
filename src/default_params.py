@@ -27,11 +27,6 @@ _C.DATA.TP.ACCEPT_NAN = False
 _C.MODEL = CN()
 _C.MODEL.ENCODER_TYPE = "transformer"
 _C.MODEL.TYPE = "COPY_LAST"
-<<<<<<< HEAD
-=======
-#_C.MODEL.TYPE = "GT"
-#_C.MODEL.TYPE = "socialGAN"
->>>>>>> 4a32423 (first commit)
 _C.MODEL.FLOW = CN()
 _C.MODEL.FLOW.ARCHITECTURE = 'realNVP'
 _C.MODEL.FLOW.N_BLOCKS = 3
@@ -46,10 +41,6 @@ _C.SOLVER.ITER = 100
 _C.SOLVER.SAVE_EVERY = 10
 _C.SOLVER.USE_SCHEDULER = False
 _C.SOLVER.VALIDATION = True
-<<<<<<< HEAD
-=======
-#_C.SOLVER.WEIGHT_DECAY = 1e-5
->>>>>>> 4a32423 (first commit)
 _C.SOLVER.WEIGHT_DECAY = 0.0
 _C.SOLVER.DEQUANTIZE = False
 

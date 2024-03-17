@@ -5,11 +5,7 @@ from pathlib import Path
 import torch
 import torch.nn as nn
 import torch.optim as optim
-<<<<<<< HEAD
 from src.data.TP.preprocessing import restore
-=======
-from data.TP.preprocessing import restore
->>>>>>> 4a32423 (first commit)
 
 from utils import optimizer_to_cuda
 

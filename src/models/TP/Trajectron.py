@@ -4,19 +4,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-<<<<<<< HEAD
 from src.data.TP.preprocessing import restore
 from utils import optimizer_to_cuda
 from src.data.TP.environment.scene_graph import DirectedEdge
 from src.models.TP.components import *
 from src.models.TP.model_utils import *
-=======
-from data.TP.preprocessing import restore
-from utils import optimizer_to_cuda
-from data.TP.environment.scene_graph import DirectedEdge
-from models.TP.components import *
-from models.TP.model_utils import *
->>>>>>> 4a32423 (first commit)
 from . import dynamics as dynamic_module
 import torch.nn.functional as F
 

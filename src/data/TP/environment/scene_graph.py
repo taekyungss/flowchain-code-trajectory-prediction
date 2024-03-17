@@ -135,17 +135,10 @@ class TemporalSceneGraph(object):
         position_cube = np.full((total_timesteps, N, 2), np.nan)
 
         adj_cube = np.zeros((total_timesteps, N, N), dtype=np.int8)
-<<<<<<< HEAD
         dist_cube = np.zeros((total_timesteps, N, N), dtype=float)
 
         node_type_mat = np.zeros((N, N), dtype=np.int8)
         node_attention_mat = np.zeros((N, N), dtype=float)
-=======
-        dist_cube = np.zeros((total_timesteps, N, N), dtype=np.float)
-
-        node_type_mat = np.zeros((N, N), dtype=np.int8)
-        node_attention_mat = np.zeros((N, N), dtype=np.float)
->>>>>>> 4a32423 (first commit)
 
         for node_idx, node in enumerate(nodes):
             if online:

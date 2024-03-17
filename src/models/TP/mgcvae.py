@@ -5,11 +5,7 @@ import torch.optim as optim
 from .components import *
 from .model_utils import *
 from . import dynamics as dynamic_module
-<<<<<<< HEAD
 from src.data.TP.environment.scene_graph import DirectedEdge
-=======
-from data.TP.environment.scene_graph import DirectedEdge
->>>>>>> 4a32423 (first commit)
 from .utils import *
 import pdb
 
@@ -541,11 +537,7 @@ class MultimodalGenerativeCVAE(nn.Module):
                             training=(mode == ModeKeys.TRAIN))  # [bs, max_time, enc_rnn_dim]
 
         last_index_per_sequence = -(first_history_indices + 1)
-<<<<<<< HEAD
         last_index_per_sequence = last_index_per_sequence.long()
-=======
-
->>>>>>> 4a32423 (first commit)
         return outputs[torch.arange(first_history_indices.shape[0]), last_index_per_sequence]
 
     def encode_edge(self,

@@ -1,10 +1,6 @@
 from torch.utils import data
 import numpy as np
-<<<<<<< HEAD
 from src.data.TP.preprocessing import get_node_timestep_data
-=======
-from data.TP.preprocessing import get_node_timestep_data
->>>>>>> 4a32423 (first commit)
 
 
 hypers = {

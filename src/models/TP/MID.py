@@ -12,15 +12,9 @@ from torch.optim.lr_scheduler import LambdaLR
 import torch.nn.functional as F
 
 from . import dynamics as dynamic_module
-<<<<<<< HEAD
 from src.data.TP.environment.scene_graph import DirectedEdge
 from utils import optimizer_to_cuda
 from src.data.TP.preprocessing import restore
-=======
-from data.TP.environment.scene_graph import DirectedEdge
-from utils import optimizer_to_cuda
-from data.TP.preprocessing import restore
->>>>>>> 4a32423 (first commit)
 from models.TP.components import *
 from models.TP.model_utils import *
 

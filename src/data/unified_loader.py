@@ -45,11 +45,7 @@ def unified_loader(cfg: CfgNode, rand=True, split="train", batch_size=None) -> D
                                     node_freq_mult=hypers['scene_freq_mult_train'],
                                     scene_freq_mult=hypers['node_freq_mult_train'],
                                     hyperparams=hypers,
-<<<<<<< HEAD
                                     min_history_timesteps=1 if cfg.DATA.TP.ACCEPT_NAN and split == 'train' else cfg.DATA.OBSERVE_LENGTH - 1,
-=======
-                                    min_history_timesteps=1 if cfg.DATA.TP.ACCEPT_NAN and split == 'train' else cfg.DATA.OBSERVE_LENGTH,
->>>>>>> 4a32423 (first commit)
                                     min_future_timesteps=cfg.DATA.PREDICT_LENGTH,
                                     #augment=hypers['augment'] and split == 'train'
                                     )
