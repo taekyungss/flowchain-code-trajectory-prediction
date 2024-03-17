@@ -43,7 +43,15 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
             print("timing the computation, evaluating probability map, and visualizing... ")
             data_loader_one_each = unified_loader(
                 cfg, rand=False, split="test", batch_size=1)
-            for i, data_dict in enumerate(tqdm(data_loader_one_each, leave=False, total=10)):
+            # for i, data_dict in enumerate(tqdm(data_loader_one_each, leave=False, total=10)):
+            #     data_dict = {k: data_dict[k].cuda()
+            #                  if isinstance(data_dict[k], torch.Tensor)
+            #                  else data_dict[k]
+            #                  for k in data_dict}
+            #     dict_list = []
+
+
+            for i, data_dict in enumerate(tqdm(data_loader_one_each, leave=False)):
                 data_dict = {k: data_dict[k].cuda()
                              if isinstance(data_dict[k], torch.Tensor)
                              else data_dict[k]
@@ -68,8 +76,8 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
                 result_list.append(metrics(deepcopy(dict_list)))
                 if visualize:
                     visualizer(dict_list)
-                if i == 366:
-                    break
+                # if i == 10:
+                #     break
 
 
 

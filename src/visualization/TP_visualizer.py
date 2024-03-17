@@ -91,9 +91,10 @@ class TP_Visualizer(Visualizer):
 
             xx, yy = self.get_grid(index)
 
+            update_step = 1
+
             for k in dict_list[0].keys():
-                if k[0] == "prob":
-                    update_step = k[1]
+                if k[0] == "prob" and k[1] == update_step:
                     prob = dict_list[0][k]
 
                     bs, _, timesteps = prob.shape
@@ -125,7 +126,7 @@ class TP_Visualizer(Visualizer):
                                   path=path_density_map /
                                        f"update{update_step}_{index[i][0]}_{index[i][1]}_{index[i][2].strip('PEDESTRIAN/')}_sum.png",
                                   )
-
+                    # if index[i][2].strip('PEDESTRIAN/') !=
 
     def prob_to_grid(self, dict_list: List[Dict]) -> List:
         if ("prob", 0) in dict_list[0]:
