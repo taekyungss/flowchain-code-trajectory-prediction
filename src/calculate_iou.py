@@ -1,5 +1,6 @@
 import os
 import cv2
+import pandas as pd
 
 def calculate_IOU(image_path1, image_path2):
     # 이미지 읽어오기 및 grayscale 변환
@@ -22,7 +23,7 @@ def extract_number_from_filename(filename):
     return numbers
 
 def main(folder_path):
-
+    result = []
 
     png_files = [file for file in os.listdir(folder_path) if file.endswith('.png')]
     grouped_images = {}
@@ -44,8 +45,11 @@ def main(folder_path):
                     #calculate IOU
                     iou = calculate_IOU(image_path1, image_path2)
                     print(iou)
-#
-#
+                    result.append({'Image1': images[i], 'Image2': images[j], 'IOU': iou})
+
+    df = pd.DataFrame(result)
+    df.to_csv("iou_results.csv", index=False)
+
 if __name__ == "__main__":
     folder_path = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/visualize/density_map"
     main(folder_path)
