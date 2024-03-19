@@ -19,7 +19,7 @@ from visualization.build_visualizer import Build_Visualizer
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="pytorch training & testing code for task-agnostic time-series prediction")
-    parser.add_argument("--config_file", type=str, default='config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth.yml',
+    parser.add_argument("--config_file", type=str, default='config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp.yml',
                         metavar="FILE", help='path to config file')
     parser.add_argument("--gpu", type=str, default='0')
     parser.add_argument(
