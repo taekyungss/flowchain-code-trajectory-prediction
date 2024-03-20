@@ -111,5 +111,5 @@ def main(folder_path):
     df.to_csv("iou_results.csv", index=False)
 
 if __name__ == "__main__":
-    folder_path = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp/visualize/density_map"
+    folder_path = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eht/visualize/density_map"
     main(folder_path)

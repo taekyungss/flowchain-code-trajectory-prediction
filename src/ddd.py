@@ -71,19 +71,32 @@ def calculate_IOU(image_path1, image_path2):
 
     image1 = cv2.imread(image_path1, cv2.IMREAD_GRAYSCALE)
     image2 = cv2.imread(image_path2, cv2.IMREAD_GRAYSCALE)
-    _, thresh1 = cv2.threshold(image1, 240, 255, cv2.THRESH_BINARY)
-    _, thresh2 = cv2.threshold(image2, 240, 255, cv2.THRESH_BINARY)
+    cv2.imshow('image1', image1)
+    cv2.imshow('image2', image2)
 
+    _, thresh1 = cv2.threshold(image1, 220, 255, cv2.THRESH_BINARY)
+    _, thresh2 = cv2.threshold(image2, 220, 255, cv2.THRESH_BINARY)
+
+    # 두 이미지의 모든 픽셀을 비교하여 겹치는 영역 계산
+    # numpyarray에서 임계값을 기반으로 이진화된 이미지에서, 동일한 이미지에서 두 픽셀의 결과를 비교하여 겹치는 부분 저장
+    # 문제 또 이렇게 하니까 흰 영역이 너무 많아서 값이 매우 작게 나옴,,, iou값이
 
     intersection = np.logical_and(thresh1, thresh2)
     intersection_area = np.sum(intersection)
     print(intersection_area)
 
+    # # 시각화 용
+    intersection_image = np.zeros_like(image1)
+    intersection_image[intersection] = 255
+    cv2.imshow("thresh1", thresh1)
+    cv2.imshow("thresh2", thresh2)
+    cv2.imshow("intersection", intersection_image)
 
     # union
     union = np.logical_or(thresh1, thresh2)
     union_area = np.sum(union)
     print(union_area)
+
 
     union_image  = np.zeros_like(image1)
     union_image[union] = 255
@@ -95,8 +108,8 @@ def calculate_IOU(image_path1, image_path2):
     return iou
 
 if __name__ == "__main__":
-    image_path1 = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp/visualize/density_map/update1_tmp_10_4_sum.png"  # 첫 번째 이미지 경로
-    image_path2 = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp/visualize/density_map/update1_tmp_10_5_sum.png"  # 두 번째 이미지 경로
+    image_path1 = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/visualize/density_map/update1_biwi_eth_87_2_sum.png"  # 첫 번째 이미지 경로
+    image_path2 = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/visualize/density_map/update1_biwi_eth_951_216_sum.png"  # 두 번째 이미지 경로
 
     iou = calculate_IOU(image_path1, image_path2)
     print("IOU:", iou)
