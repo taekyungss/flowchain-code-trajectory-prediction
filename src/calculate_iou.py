@@ -63,7 +63,7 @@ def calculate_IOU(image_path1, image_path2):
     union = np.logical_or(thresh1, thresh2)
     union_area = np.sum(union)
 
-    union_image  = np.zeros_like(image1)
+    union_image = np.zeros_like(image1)
     union_image[union] = 255
     # cv2.imshow("union_image", union_image)
     # cv2.waitKey(0)
@@ -91,6 +91,11 @@ def main(folder_path):
 
     # 여기서 이미지들에 대해 groupkey 즉, filename안에 있는 frame(?)이 같은데 track_id 가 다른 경우 매칭하도록 만들기
     # 해당 매칭된 데이터들에 대해서는 같이 iou계산하도록
+
+    # EDIT : 수정해야할 사항 : frame단위마다 density map 저장 시키고, 해당 프레임 내에서 다른 객체끼리 비교해서
+    # 해당 부분에 대한 경우의 수를 계산하도록 할것 우리가생각했던 첫번째 index는 앞으로 예측할 frame, 그리고 그 뒤에 index는 그 이후 track_id가 맞음
+    # + yolo랑 이거 IOU겹치는 부분에 대해 시각화해서 교수님 설명자료 어여 만들기
+
 
     for group_key, images in grouped_images.items():
         if len(images) >= 2:
