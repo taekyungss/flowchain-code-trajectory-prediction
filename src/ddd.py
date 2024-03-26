@@ -135,19 +135,14 @@ plt.show()
 masked = cv2.imread(image_path2)
 masked_gray = cv2.cvtColor(masked, cv2.COLOR_BGR2GRAY)
 res, masked_thr = cv2.threshold(masked_gray, 220, 255, cv2.THRESH_BINARY)
-# 마스크 처리된(segment한 이미지)도 마찬가지로 흑백으로 전환시켜줍니다.
 plt.imshow(masked)
 plt.show()
 
 intersection = cv2.countNonZero(cv2.bitwise_and(grd_truth_thr, masked_thr))
-# and연산을 해서, 교집합(같은 영역을 비교해서 해당 픽셀에서 둘 다 1이면 교집합이기 때문에 1로 연산합니다.)을 구합니다.
-# 그리고 countNonZero로 픽셀이 0이 아닌 것만(검정 픽셀) 계산합니다. 그것이 면적입니다.
 plt.imshow(cv2.bitwise_and(grd_truth_thr, masked_thr), cmap='gray')
 plt.show()
 
 union = cv2.countNonZero(cv2.bitwise_or(grd_truth_thr,masked_thr))
-# or연산을 해서, 합집합(같은 영역을 비교해서 해당 픽셀에서 어느 하나라도 1이면 1로 처리해서 합집합을 구현합니다.)을 구합니다.
-# 그리고 countNonZero로 픽셀이 0이 아닌 것만(검정 픽셀) 계산합니다. 그것이 면적입니다.
 plt.imshow(cv2.bitwise_or(grd_truth_thr, masked_thr), cmap='gray')
 plt.show()
 

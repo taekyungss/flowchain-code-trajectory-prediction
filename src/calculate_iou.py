@@ -92,23 +92,25 @@ def main(folder_path):
     # 여기서 이미지들에 대해 groupkey 즉, filename안에 있는 frame(?)이 같은데 track_id 가 다른 경우 매칭하도록 만들기
     # 해당 매칭된 데이터들에 대해서는 같이 iou계산하도록
 
-    # EDIT : 수정해야할 사항 : frame단위마다 density map 저장 시키고, 해당 프레임 내에서 다른 객체끼리 비교해서
-    # 해당 부분에 대한 경우의 수를 계산하도록 할것 우리가생각했던 첫번째 index는 앞으로 예측할 frame, 그리고 그 뒤에 index는 그 이후 track_id가 맞음
+    # EDIT : 수정해야할 사항 : frame 단위마다 density map 저장 시키고, 해당 프레임 내에서 다른 객체끼리 비교해서
+    # 해당 부분에 대한 경우의 수를 계산하도록 할것 우리가 생각했던 첫번째 index는 앞으로 예측할 frame, 그리고 그 뒤에 index는 그 이후 track_id가 맞음
     # + yolo랑 이거 IOU겹치는 부분에 대해 시각화해서 교수님 설명자료 어여 만들기
 
 
-    for group_key, images in grouped_images.items():
-        if len(images) >= 2:
-            for i in range(len(images)):
-                for j in range(i + 1, len(images)):
-                    image_path1 = os.path.join(folder_path, images[i])
-                    image_path2 = os.path.join(folder_path, images[j])
-                    print(image_path1,"/",image_path2)
 
 
-                    iou = calculate_IOU(image_path1, image_path2)
-                    print(iou)
-                    result.append({'Image1': images[i], 'Image2': images[j], 'IOU': iou})
+    # for group_key, images in grouped_images.items():
+    #     if len(images) >= 2:
+    #         for i in range(len(images)):
+    #             for j in range(i + 1, len(images)):
+    #                 image_path1 = os.path.join(folder_path, images[i])
+    #                 image_path2 = os.path.join(folder_path, images[j])
+    #                 print(image_path1,"/",image_path2)
+    #
+    #
+    #                 iou = calculate_IOU(image_path1, image_path2)
+    #                 print(iou)
+    #                 result.append({'Image1': images[i], 'Image2': images[j], 'IOU': iou})
 
     # 이후, 계산 결과에 대해 csv 파일로 저장
 
@@ -117,4 +119,5 @@ def main(folder_path):
 
 if __name__ == "__main__":
     folder_path = "output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp/visualize/density_map"
-    main(folder_path)
+    result = main(folder_path)
+    print(result)
