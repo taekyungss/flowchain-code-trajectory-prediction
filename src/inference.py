@@ -19,7 +19,7 @@ from visualization.build_visualizer import Build_Visualizer
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="pytorch training & testing code for task-agnostic time-series prediction")
-    parser.add_argument("--config_file", type=str, default='config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp.yml',
+    parser.add_argument("--config_file", type=str, default='config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth.yml',
                         metavar="FILE", help='path to config file')
     parser.add_argument("--gpu", type=str, default='0')
     parser.add_argument(
@@ -77,9 +77,10 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
                 dict_list = visualizer.prob_to_grid(dict_list)
                 result_list.append(metrics(deepcopy(dict_list)))
                 if visualize:
+                    # if dict_list[0]["index"][0][2] == "PEDESTRIAN/37":
                     visualizer(dict_list)
-                # if i == 10:
-                #     break
+                if i == 10:
+                    break
 
 
 

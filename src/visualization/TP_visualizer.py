@@ -114,8 +114,12 @@ class TP_Visualizer(Visualizer):
                         zz /= np.max(zz)
                         zz_list.append(zz)
                     zz_sum = sum(zz_list)
-
+                    # print(zz_sum)
                     # print(index[i][2])
+                    # import csv
+                    # with open("filename.csv", "w") as file:
+                    #     writer = csv.writer(file)
+                    #     writer.writerows(zz_sum)
 
                     # plot_density(xx, yy, zz_sum,
                     #              path=path_density_map /
