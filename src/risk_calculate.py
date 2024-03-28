@@ -20,8 +20,8 @@ def spark_pixel(path):
     min_intensity_pixel = torch.Tensor(list(min_intensity_pixel))
     return min_intensity_pixel
 
-a = "1201_353"
-b = "1201_350"
+a = "112_11"
+b = "112_12"
 path1 = f"output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/density_map/update1_biwi_eth_{a}_sum.png"
 path2 = f'output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/density_map/update1_biwi_eth_{b}_sum.png'
 
