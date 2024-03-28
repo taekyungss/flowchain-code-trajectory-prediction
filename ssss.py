@@ -9,8 +9,8 @@ def extract_number_from_filename(filename):
 
 def calculate_IOU(image1, image2):
     # 이미지 이진화
-    _, thresh1 = cv2.threshold(image1, 180, 255, cv2.THRESH_BINARY)
-    _, thresh2 = cv2.threshold(image2, 180, 255, cv2.THRESH_BINARY)
+    _, thresh1 = cv2.threshold(image1, 220, 255, cv2.THRESH_BINARY)
+    _, thresh2 = cv2.threshold(image2, 220, 255, cv2.THRESH_BINARY)
 
     # 두 이미지의 모든 픽셀을 비교하여 겹치는 영역 계산
     intersection = np.logical_and(thresh1, thresh2)

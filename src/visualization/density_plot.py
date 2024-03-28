@@ -30,7 +30,7 @@ def plot_density2(p: np.array, path: Path, traj=None) -> None:
                    norm=matplotlib.colors.Normalize())
 
     plt.axis('off')
-    plt.gca().set_aspect('equal', adjustable='box')
+    # plt.gca().set_aspect('equal', adjustable='box')
     plt.savefig(path, bbox_inches='tight')
     plt.close()
 
