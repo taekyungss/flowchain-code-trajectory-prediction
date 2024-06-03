@@ -16,6 +16,8 @@ from visualization.build_visualizer import Build_Visualizer
 
 # track_id별 trajectory(궤적) prediction을 통한 density map을 그림으로 출력해서 내보내는 inference code
 
+
+# argument : gpu, mode, visualize / default로 설정해둠
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="pytorch training & testing code for task-agnostic time-series prediction")
@@ -34,9 +36,10 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
     model.eval()
     metrics = Build_Metrics(cfg)
     visualizer = Build_Visualizer(cfg)
-
+    # timesteps 1번째만 시각화시킴 (0을 기반으로 1 update 시키는 방식)
     update_timesteps = [1]
 
+    # visualize 코드 -> method가 visualize를 진행한다음에, 해당 시각화된 경로를 통해서 거리 계산
     if visualize:
         with torch.no_grad():
             result_list = []
@@ -52,6 +55,8 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
             #                  for k in data_dict}
             #     dict_list = []
 
+            # 모든 시점, 인스턴스에 대한 시각화를 진행하도록 하는 코드
+            # 위의 주석처리한 코드는 total =10 을 선택하면, 10개만 시각화된 결과물을 출력할 수 있다.
 
             for i, data_dict in enumerate(tqdm(data_loader_one_each, leave=False)):
                 data_dict = {k: data_dict[k].cuda()
@@ -60,6 +65,7 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
                              for k in data_dict}
                 dict_list = []
 
+                # 모델 예측 부분
                 result_dict = model.predict(
                     deepcopy(data_dict), return_prob=True)  # warm-up
                 result_dict = model.predict(
@@ -81,7 +87,7 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
                     visualizer(dict_list)
                 if i == 10:
                     break
-
+s
 
 
 def test(cfg: CfgNode, visualize) -> None:
@@ -99,7 +105,7 @@ def test(cfg: CfgNode, visualize) -> None:
     with open(os.path.join(cfg.OUTPUT_DIR, "metrics.json"), "w") as fp:
         json.dump(result_info, fp)
 
-
+# 밀도 기반 시각화를 위한, KDE(Kernel Density Estimation) 코드
 def kde(dict_list: List):
     from src.utils import GaussianKDE
     for data_dict in dict_list:
