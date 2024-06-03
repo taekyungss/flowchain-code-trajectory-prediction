@@ -87,7 +87,7 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
                     visualizer(dict_list)
                 if i == 10:
                     break
-s
+
 
 
 def test(cfg: CfgNode, visualize) -> None:
