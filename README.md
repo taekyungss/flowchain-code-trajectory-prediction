@@ -1,6 +1,8 @@
 
 # flowchain-trajectory-prediction
 
+[flowchain paper](https://arxiv.org/abs/2308.08824)
+
 ### 모델 설명
 
 FlowChain 모델을 사용하여 경로 예측후, 확률 값을 기반으로 앞으로 객체가 이동할 경로의 확률을 나타내는 density map을 생성한다.
