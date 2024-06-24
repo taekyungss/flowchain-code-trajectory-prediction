@@ -39,24 +39,13 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
     # timesteps 1번째만 시각화시킴 (0을 기반으로 1 update 시키는 방식)
     update_timesteps = [1]
 
-    # visualize 코드 -> method가 visualize를 진행한다음에, 해당 시각화된 경로를 통해서 거리 계산
+    # visualize 코드
     if visualize:
         with torch.no_grad():
             result_list = []
             print("timing the computation, evaluating probability map, and visualizing... ")
             data_loader_one_each = unified_loader(
                 cfg, rand=False, split="test", batch_size=1)
-
-
-            # for i, data_dict in enumerate(tqdm(data_loader_one_each, leave=False, total=10)):
-            #     data_dict = {k: data_dict[k].cuda()
-            #                  if isinstance(data_dict[k], torch.Tensor)
-            #                  else data_dict[k]
-            #                  for k in data_dict}
-            #     dict_list = []
-
-            # 모든 시점, 인스턴스에 대한 시각화를 진행하도록 하는 코드
-            # 위의 주석처리한 코드는 total =10 을 선택하면, 10개만 시각화된 결과물을 출력할 수 있다.
 
             for i, data_dict in enumerate(tqdm(data_loader_one_each, leave=False)):
                 data_dict = {k: data_dict[k].cuda()
@@ -83,7 +72,6 @@ def evaluate_model(cfg: CfgNode, model: torch.nn.Module, data_loader: torch.util
                 dict_list = visualizer.prob_to_grid(dict_list)
                 result_list.append(metrics(deepcopy(dict_list)))
                 if visualize:
-                    # if dict_list[0]["index"][0][2] == "PEDESTRIAN/37":
                     visualizer(dict_list)
                 if i == 10:
                     break

@@ -17,10 +17,13 @@ def spark_pixel(path):
     min_intensity_pixel = torch.Tensor(list(min_intensity_pixel))
     return min_intensity_pixel
 
-# 여기다가 각각 iamge pair 입력
-path1 = f"output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/density_map/update1_biwi_eth_112_11_sum.png"
-path2 = f'output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/eth/density_map/update1_biwi_eth_112_12_sum.png'
+# 각각 iamge pair 입력
+path1 = f"첫번째 image"
+path2 = f"두번째 image"
 
 distance = float(F.pairwise_distance(spark_pixel(path1), spark_pixel(path2)))
 print(distance)
+
+
+
 
