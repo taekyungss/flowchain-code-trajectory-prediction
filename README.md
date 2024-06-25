@@ -24,6 +24,73 @@ FlowChain 모델은 Conditional Continuously-indexed (CIFs) 흐름을 쌓아, �
 
 [Weight google drive](https://drive.google.com/drive/folders/1T-Chadz-1OfEzWD5DmEFPAeiKqT2oJNK?usp=sharing)
 
+### 모델 input 데이터 경로
+
+
+```python
+src
+└─ config
+│    └─TP
+│        └─FlowChain
+│            └─CIF_separate_cond_v_trajectron
+│              ├─eth
+│              └─tmp
+├─data
+│  ├─TP
+│  │  ├─environment
+│  │  │ 
+│  │  ├─processed_data
+│  │  ├─raw_data
+│  │  │  ├─eth
+│  │  │  │  ├─test
+│  │  │  │  ├─train
+│  │  │  │  └─val
+│  │  │  ├─hotel
+│  │  │  │  ├─test
+│  │  │  │  ├─train
+│  │  │  │  └─val
+│  │  │  ├─stanford
+│  │  │  ├─tmp
+│  │  │  │  ├─test
+│  │  │  │  ├─train
+│  │  │  │  └─val
+│  │  │  ├─univ
+│  │  │  │  ├─test
+│  │  │  │  ├─train
+│  │  │  │  └─val
+│  │  │  ├─zara1
+│  │  │  │  ├─test
+│  │  │  │  ├─train
+│  │  │  │  └─val
+│  │  │  └─zara2
+│  │  │      ├─test
+│  │  │      ├─train
+│  │  │      └─val
+│  │  ├─src
+│  │  │  └─data
+│  │  │      └─TP
+│  │  │          └─processed_data
+└─└─└─└─
+
+```
+
+
+### 모델 output 경로
+
+```python
+output
+└─config
+    └─TP
+        └─FlowChain
+            └─CIF_separate_cond_v_trajectron
+                ├─eth
+                │  └─density_map
+                └─tmp
+                    └─visualize
+                        └─density_map
+```
+
+
 ### 모델 pt값 위치
 ```python
 output/config/TP/FlowChain/CIF_separate_cond_v_trajectron/tmp/ckpt.pt
